@@ -1,10 +1,11 @@
 defmodule Holodex.Api.Client do
   @moduledoc """
   The main Holodex API client module.
+  
+  Wraps the Holodex REST API and provides additional helper client functions.
   """
   use HTTPoison.Base
 
-  # @expected_fields ~w(total items)
   @api_version "v2"
   @api_base_url "https://holodex.net/api/#{@api_version}"
 
@@ -32,29 +33,50 @@ defmodule Holodex.Api.Client do
   @impl true
   def process_request_headers(headers) do
     # TODO: get from config instead
-    api_key = "37416592-50cc-437c-83a5-2ab3d08d96d0"
+    api_key = ""
     headers ++ [{"X-APIKEY", api_key}]
   end
 
   @impl true
   def process_response_body(body) do
-    body
-    |> Jason.decode!()
+    with {:ok, body} <- Jason.decode(body) do
+      body
+    end
+  end
+
+  ### Public API
+
+  @doc """
+  Get all channels from Holodex, optionally with given parameters.
+
+  Raises on error.
+  """
+  @spec listChannels!(channel_opts()) :: client_resp()
+  def listChannels!(opts \\ %{}) do
+    with url <- build_channels_url(opts) do
+      Holodex.Api.Client.get!(url).body
+    end
   end
 
   @doc """
   Get all channels from Holodex, optionally with given parameters.
+  
+  Returns a tuple containing the response body or an error.
   """
-  @spec listChannels!(channel_opts()) :: client_resp()
-  def listChannels!(opts \\ %{}) do
+  @spec listChannels(channel_opts()) :: {:ok, list()} | {:error, HTTPoison.Error.t()}
+  def listChannels(opts \\ %{}) do
+    with url <- build_channels_url(opts),
+         {:ok, response} <- Holodex.Api.Client.get(url) do
+      {:ok, response.body}
+    end
+  end
+
+  defp build_channels_url(opts) do
     query = URI.encode_query(opts)
 
-    url =
-      "/channels"
-      |> URI.parse()
-      |> Map.put(:query, query)
-      |> URI.to_string()
-
-    Holodex.Api.Client.get!(url)
+    "/channels"
+    |> URI.parse()
+    |> Map.put(:query, query)
+    |> URI.to_string()
   end
 end
