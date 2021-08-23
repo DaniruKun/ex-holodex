@@ -7,12 +7,14 @@ defmodule Holodex.MixProject do
   @version "0.1.0"
 
   @deps [
-	{:jason, "~> 1.2.2"},
-    {:httpoison, "~> 1.8"}
+    {:jason, "~> 1.2.2"},
+    {:httpoison, "~> 1.8"},
+    {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+	{:dialyxir, "~> 1.0", only: [:dev], runtime: false}
   ]
 
   @package [
-	name: @app
+    name: @app
   ]
 
   def project do
@@ -22,8 +24,8 @@ defmodule Holodex.MixProject do
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       deps: @deps,
-	  description: "An Elixir client library for the Holodex API.",
-	  package: @package
+      description: "An Elixir client library for the Holodex API.",
+      package: @package
     ]
   end
 
@@ -33,5 +35,4 @@ defmodule Holodex.MixProject do
       extra_applications: [:logger]
     ]
   end
-
 end
