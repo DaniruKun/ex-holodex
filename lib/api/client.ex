@@ -38,6 +38,6 @@ defmodule Holodex.Api.Client do
   end
 
   defp keys_to_atoms(key_vals) do
-    Map.new(key_vals, fn {k, v} -> {String.to_existing_atom(k), v} end)
+    Map.new(key_vals, fn {k, v} -> {String.to_atom(k), v} end)
   end
 end
