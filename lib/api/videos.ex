@@ -6,7 +6,7 @@ defmodule Holodex.Api.Videos do
   """
 
   alias Holodex.Api.Client
-  alias Holodex.Model.Video
+  alias Holodex.Model.{Comment, Video}
 
   @type opts() ::
           %{
@@ -72,8 +72,9 @@ defmodule Holodex.Api.Videos do
   """
   @spec video_info!(String.t(), single_opts()) :: Video.t()
   def video_info!(video_id, opts \\ %{}) do
-    with url <- build_videos_url(opts, "/videos/#{video_id}") do
-      Client.get!(url).body
+    with url <- build_videos_url(opts, "/videos/#{video_id}"),
+         response <- Client.get!(url) do
+      response.body |> process_single_video()
     end
   end
 
@@ -84,7 +85,7 @@ defmodule Holodex.Api.Videos do
   def video_info(video_id, opts \\ %{}) do
     with url <- build_videos_url(opts, "/videos/#{video_id}"),
          {:ok, response} <- Client.get(url) do
-      {:ok, response.body}
+      {:ok, response.body |> process_single_video()}
     end
   end
 
@@ -102,5 +103,14 @@ defmodule Holodex.Api.Videos do
     |> URI.parse()
     |> Map.put(:query, query)
     |> URI.to_string()
+  end
+
+  defp process_single_video(video) do
+    if Map.has_key?(video, :comments) do
+      comments = video.comments |> Enum.map(&Comment.build/1)
+      %{video | comments: comments}
+    else
+      video
+    end
   end
 end
