@@ -1,8 +1,12 @@
 defmodule Holodex.Model.Video do
   @moduledoc false
 
+  alias Holodex.Model
+
   @typedoc """
   `Video` resource type definition. A map of atom keys and mstly UTF-8 binary values. Can optionally contain a `channel` bare map.
+  
+
   """
   @type t() :: %{
           id: String.t(),
@@ -20,14 +24,12 @@ defmodule Holodex.Model.Video do
           description: String.t(),
           songcount: pos_integer(),
           channel_id: String.t(),
-          channel:
-            %{
-              id: String.t(),
-              name: String.t(),
-              english_name: String.t(),
-              type: String.t(),
-              photo: String.t()
-            }
-            | nil
+          channel: Model.Channel.t() | nil,
+          clips: [Model.Clip.t()] | nil,
+		  sources: [Model.Video.t()] | nil,
+		  refers: [Model.Video.t()] | nil,
+		  simulcasts: [Model.Video.t()] | nil,
+		  mentions: [Model.Channel.t()] | nil,
+		  songs: number() | nil
         }
 end
