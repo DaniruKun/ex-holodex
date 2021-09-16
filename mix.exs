@@ -10,22 +10,30 @@ defmodule Holodex.MixProject do
     {:jason, "~> 1.2.2"},
     {:httpoison, "~> 1.8"},
     {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-	{:dialyxir, "~> 1.0", only: [:dev], runtime: false}
+	{:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+	{:ex_doc, "~> 0.25.1", only: :dev}
   ]
 
   @package [
-    name: @app
+    name: @app,
+	files: ["lib", "mix.exs", "README*", "LICENSE"],
+	maintainers: ["Daniils Petrovs"],
+	licenses: ["GNU GPLv3"]
   ]
+
+  @description "An Elixir client library for the Holodex API."
 
   def project do
     [
       app: @app,
       version: @version,
-      elixir: "~> 1.12",
+      elixir: "~> 1.11",
+	  build_embedded: Mix.env == :prod,
       start_permanent: Mix.env() == :prod,
       deps: @deps,
-      description: "An Elixir client library for the Holodex API.",
-      package: @package
+      description: @description,
+      package: @package,
+	  source_url: @home_url
     ]
   end
 
