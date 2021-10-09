@@ -7,11 +7,12 @@ defmodule Holodex.MixProject do
   @version "0.1.0"
 
   @deps [
-    {:jason, "~> 1.2.2"},
+	{:poison, "~> 5.0"},
     {:httpoison, "~> 1.8"},
     {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
 	{:dialyxir, "~> 1.0", only: [:dev], runtime: false},
-	{:ex_doc, "~> 0.25.1", only: :dev}
+	{:ex_doc, "~> 0.25.1", only: :dev},
+	{:exconstructor, "~> 1.2.4"}
   ]
 
   @package [
