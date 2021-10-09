@@ -25,10 +25,11 @@ defmodule Holodex.Api.Channels do
 
   Raises an exception in case of failure.
   """
-  @spec list_channels!(opts()) :: [Channel.t()]
+  @spec list_channels!(opts()) :: [Channel.t()] | no_return()
   def list_channels!(opts \\ %{}) do
-    with url <- build_channels_url(opts) do
-      Client.get!(url).body
+    with url <- build_channels_url(opts),
+         response <- Client.get!(url) do
+      Poison.decode!(response.body, %{as: [%Channel{}]})
     end
   end
 
@@ -37,11 +38,13 @@ defmodule Holodex.Api.Channels do
 
   Returns a tuple containing the response body or an error.
   """
-  @spec list_channels(opts()) :: {:ok, [Channel.t()]} | {:error, HTTPoison.Error.t()}
+  @spec list_channels(opts()) ::
+          {:ok, [Channel.t()]} | {:error, HTTPoison.Error.t()} | {:error, Exception.t()}
   def list_channels(opts \\ %{}) do
     with url <- build_channels_url(opts),
-         {:ok, response} <- Client.get(url) do
-      {:ok, response.body}
+         {:ok, response} <- Client.get(url),
+         {:ok, decoded} <- Poison.decode(response.body, %{as: [%Channel{}]}) do
+      {:ok, decoded}
     end
   end
 
@@ -50,9 +53,11 @@ defmodule Holodex.Api.Channels do
 
   Raises an exception in case of failure.
   """
-  @spec get_channel!(binary()) :: Channel.t()
+  @spec get_channel!(binary()) :: Channel.t() | no_return()
   def get_channel!(channel_id) do
-    Client.get!("/channels/#{channel_id}").body
+    with response <- Client.get!("/channels/#{channel_id}") do
+      Poison.decode!(response.body, %{as: %Channel{}})
+    end
   end
 
   @doc """
@@ -60,10 +65,12 @@ defmodule Holodex.Api.Channels do
 
   Returns a tuple containing the channel info or an error.
   """
-  @spec get_channel(binary()) :: {:ok, Channel.t()} | {:error, HTTPoison.Error.t()}
+  @spec get_channel(binary()) ::
+          {:ok, Channel.t()} | {:error, HTTPoison.Error.t()} | {:error, Exception.t()}
   def get_channel(channel_id) do
-    with {:ok, response} <- Client.get("/channels/#{channel_id}") do
-      {:ok, response.body}
+    with {:ok, response} <- Client.get("/channels/#{channel_id}"),
+         {:ok, decoded} <- Poison.decode(response.body, %{as: %Channel{}}) do
+      {:ok, decoded}
     end
   end
 
