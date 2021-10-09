@@ -6,7 +6,7 @@ defmodule Holodex.Api.Videos do
   """
 
   alias Holodex.Api.Client
-  alias Holodex.Model.{Comment, Video}
+  alias Holodex.Model.{Channel, Comment, Video}
 
   @type opts() ::
           %{
@@ -35,6 +35,26 @@ defmodule Holodex.Api.Videos do
           }
           | %{}
 
+  @list_of_videos_p [
+    %Video{
+      clips: [%Video{}],
+      sources: [%Video{}],
+      refers: [%Video{}],
+      simulcasts: [%Video{}],
+      mentions: [%Channel{}]
+    }
+  ]
+
+  @single_video_p %Video{
+    clips: [%Video{}],
+    sources: [%Video{}],
+    refers: [%Video{}],
+    simulcasts: [%Video{}],
+    mentions: [%Channel{}],
+    comments: [%Comment{}],
+    recommendations: [%Video{}]
+  }
+
   defdelegate fetch(video_id), to: __MODULE__, as: :video_info
   defdelegate fetch(video_id, opts), to: __MODULE__, as: :video_info
   defdelegate fetch!(video_id), to: __MODULE__, as: :video_info!
@@ -45,10 +65,11 @@ defmodule Holodex.Api.Videos do
 
   Raises an exception in case of failure.
   """
-  @spec list_videos!(opts()) :: [Video.t()]
+  @spec list_videos!(opts()) :: [Video.t()] | no_return()
   def list_videos!(opts \\ %{}) do
-    with url <- build_videos_url(opts) do
-      Client.get!(url).body
+    with url <- build_videos_url(opts),
+         body <- Client.get!(url).body do
+      Poison.decode!(body, %{as: @list_of_videos_p})
     end
   end
 
@@ -57,11 +78,13 @@ defmodule Holodex.Api.Videos do
 
   Returns a tuple containing  the response body or an error.
   """
-  @spec list_videos(opts()) :: {:ok, [Video.t()]} | {:error, HTTPoison.Error.t()}
+  @spec list_videos(opts()) ::
+          {:ok, [Video.t()]} | {:error, HTTPoison.Error.t()} | {:error, Exception.t()}
   def list_videos(opts \\ %{}) do
     with url <- build_videos_url(opts),
-         {:ok, response} <- Client.get(url) do
-      {:ok, response.body}
+         {:ok, response} <- Client.get(url),
+         {:ok, decoded} <- Poison.decode(response.body, %{as: @list_of_videos_p}) do
+      {:ok, decoded}
     end
   end
 
@@ -74,43 +97,35 @@ defmodule Holodex.Api.Videos do
   def video_info!(video_id, opts \\ %{}) do
     with url <- build_videos_url(opts, "/videos/#{video_id}"),
          response <- Client.get!(url) do
-      response.body |> process_single_video()
+      Poison.decode!(response.body, %{as: @single_video_p})
     end
   end
 
   @doc """
   Returns a single `Video` in a tuple, optionally with  comments and recommendation.
   """
-  @spec video_info(String.t(), single_opts()) :: {:ok, Video.t()} | {:error, HTTPoison.Error.t()}
+  @spec video_info(String.t(), single_opts()) ::
+          {:ok, Video.t()} | {:error, HTTPoison.Error.t()} | {:error, Exception.t()}
   def video_info(video_id, opts \\ %{}) do
     with url <- build_videos_url(opts, "/videos/#{video_id}"),
-         {:ok, response} <- Client.get(url) do
-      {:ok, response.body |> process_single_video()}
+         {:ok, response} <- Client.get(url),
+         {:ok, decoded} <- Poison.decode(response.body, %{as: @single_video_p}) do
+      {:ok, decoded}
     end
   end
 
   defp build_videos_url(opts, path \\ "/videos") do
-    new_opts =
+    query =
       if Map.has_key?(opts, :include) && is_list(opts[:include]) do
         Map.merge(opts, %{include: Enum.join(opts[:include], ",")})
       else
         opts
       end
-
-    query = URI.encode_query(new_opts)
+      |> URI.encode_query()
 
     path
     |> URI.parse()
     |> Map.put(:query, query)
     |> URI.to_string()
-  end
-
-  defp process_single_video(video) do
-    if Map.has_key?(video, :comments) do
-      comments = video.comments |> Enum.map(&Comment.build/1)
-      %{video | comments: comments}
-    else
-      video
-    end
   end
 end

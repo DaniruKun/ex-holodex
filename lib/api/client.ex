@@ -23,21 +23,4 @@ defmodule Holodex.Api.Client do
     api_key = ""
     headers ++ [{"X-APIKEY", api_key}]
   end
-
-  @impl true
-  def process_response_body(body) do
-    with {:ok, body} <- Jason.decode(body) do
-      case is_map(body) do
-        true ->
-          keys_to_atoms(body)
-
-        _ ->
-          body |> Enum.map(&keys_to_atoms/1)
-      end
-    end
-  end
-
-  defp keys_to_atoms(key_vals) do
-    Map.new(key_vals, fn {k, v} -> {String.to_atom(k), v} end)
-  end
 end

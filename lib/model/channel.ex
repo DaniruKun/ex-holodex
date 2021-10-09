@@ -1,6 +1,26 @@
 defmodule Holodex.Model.Channel do
   @moduledoc false
 
+  defstruct [
+    :id,
+    :name,
+    :english_name,
+    :type,
+    :org,
+    :suborg,
+    :photo,
+    :banner,
+    :twitter,
+    :video_count,
+    :subscriber_count,
+    :view_count,
+    :clip_count,
+    :lang,
+    :published_at,
+    :inactive,
+    :description
+  ]
+
   @typedoc """
   `Channel` resource type definition. A map of atom keys and mostly UTF-8 binary values.
   """
