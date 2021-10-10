@@ -1,0 +1,43 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "X-APIKEY": ""
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://holodex.net/api/v2/channels?lang=en&limit=10&org=Hololive"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"id\":\"UC0TXe_LYZ4scaW2XMyi5_kw\",\"name\":\"AZKi Channel\",\"english_name\":\"AZKi\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"\",\"photo\":\"https://yt3.ggpht.com/ytc/AKedOLQQhnWKHLOLxjnXksGHHC8bnVS2UniL8Od6JTEPWQ=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"AZKi_VDiVA\",\"video_count\":\"207\",\"subscriber_count\":\"522000\",\"clip_count\":330,\"top_topics\":[\"singing\",\"Music_Cover\",\"Original_Song\"]},{\"id\":\"UC1CfXB_kRs3C-zaeTG3oGyg\",\"name\":\"HAACHAMA Ch 赤井はあと\",\"english_name\":\"Akai Haato\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"1st Generation\",\"photo\":\"https://yt3.ggpht.com/rNj6bichsOoUjA2N9iXWxInEt9Y2Fo5fhG4S8oR17ip8ouCu_7wmX3PnQxt6OP6Rd9OlYXYcmw=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"akaihaato\",\"video_count\":\"625\",\"subscriber_count\":\"1280000\",\"clip_count\":3215,\"top_topics\":[\"minecraft\",\"singing\",\"Tetris\"]},{\"id\":\"UC1DCedRgGHBdm81E1llLhOQ\",\"name\":\"Pekora Ch. 兎田ぺこら\",\"english_name\":\"Usada Pekora\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"3rd Generation\",\"photo\":\"https://yt3.ggpht.com/ytc/AKedOLSmHTeNNQp8A4AwsUPKzBa2ubDBWe6RSaG39mAYTw=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"usadapekora\",\"video_count\":\"729\",\"subscriber_count\":\"1730000\",\"clip_count\":11739,\"top_topics\":[\"minecraft\",\"Dragon_Quest\",\"ark\"]},{\"id\":\"UC1opHUrw8rvnsadT-iGp7Cg\",\"name\":\"Aqua Ch. 湊あくあ\",\"english_name\":\"Minato Aqua\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"2nd Generation\",\"photo\":\"https://yt3.ggpht.com/ytc/AKedOLTbU5ET3bgn0Iuz1jUBNjgSe9EW8kLxIhDUrtJlPw=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"minatoaqua\",\"video_count\":\"376\",\"subscriber_count\":\"1400000\",\"clip_count\":5103,\"top_topics\":[\"minecraft\",\"singing\",\"apex\"]},{\"id\":\"UC1suqwovbL1kzsoaZgFZLKg\",\"name\":\"Choco Ch. 癒月ちょこ\",\"english_name\":\"Yuzuki Choco\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"2nd Generation\",\"photo\":\"https://yt3.ggpht.com/ytc/AKedOLQn_VxZ1ApMgQahrkcTtSdSAr6Jpxi4eHQiMnIlsw=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"yuzukichococh\",\"video_count\":\"324\",\"subscriber_count\":\"744000\",\"clip_count\":1193,\"top_topics\":[\"apex\",\"dbd\",\"talk\"]},{\"id\":\"UC1uv2Oq6kNxgATlCiez59hw\",\"name\":\"Towa Ch. 常闇トワ\",\"english_name\":\"Tokoyami Towa\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"4th Generation\",\"photo\":\"https://yt3.ggpht.com/meRnxbRUm5yPSwq8Q5QpI5maFApm5QTGQV_LGblQFsoO0yAV4LI-nSZ70GYwMZ_tbfSa_O8MTCU=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"tokoyamitowa\",\"video_count\":\"517\",\"subscriber_count\":\"830000\",\"clip_count\":2821,\"top_topics\":[\"apex\",\"minecraft\",\"singing\"]},{\"id\":\"UC3n5uGu18FoCy23ggWWp8tA\",\"name\":\"Nanashi Mumei Ch. hololive-EN\",\"english_name\":\"Nanashi Mumei\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"English (Council)\",\"photo\":\"https://yt3.ggpht.com/MI8E8Wfmc_ngNZXUwu8ad0D-OtqDhmqGVULEu25z-ccscwzJpAw-7ewFXzZYLK2jHB9d5OgQDq4=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"nanashimumei_en\",\"video_count\":\"28\",\"subscriber_count\":\"353000\",\"clip_count\":607,\"top_topics\":[\"minecraft\",\"passpartout\",\"Superchat_Reading\"]},{\"id\":\"UC5CwaMl1eIgY8h02uZw7u8A\",\"name\":\"Suisei Channel\",\"english_name\":\"Hoshimachi Suisei\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"\",\"photo\":\"https://yt3.ggpht.com/ytc/AKedOLSAm13gTESsu39zgJ1TYb649BiGqYa_XCv5C6Lu=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"suisei_hosimati\",\"video_count\":\"406\",\"subscriber_count\":\"1170000\",\"clip_count\":3750,\"top_topics\":[\"singing\",\"Tetris\",\"minecraft\"]},{\"id\":\"UC6t3-_N8A6ME1JShZHHqOMw\",\"name\":\"Miyabi Ch. 花咲みやび\",\"english_name\":\"Hanasaki Miyabi\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"Holostars 1st Gen\",\"photo\":\"https://yt3.ggpht.com/zxQf8fShPDdHyNGTIGdP1sZ2w-wFTw9BYWupkB9mL1fr3dHEbd5-vhVJ6iA7RdNP8ixpbfOR_g=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"miyabihanasaki\",\"video_count\":\"452\",\"subscriber_count\":\"107000\",\"clip_count\":206,\"top_topics\":[\"talk\",\"minecraft\",\"Final_fantasy\"]},{\"id\":\"UC727SQYUvx5pDDGQpTICNWg\",\"name\":\"Anya Melfissa Ch. hololive-ID\",\"english_name\":\"Anya Melfissa\",\"type\":\"vtuber\",\"org\":\"Hololive\",\"group\":\"Indonesia 2nd Gen\",\"photo\":\"https://yt3.ggpht.com/ytc/AKedOLR0AplPQyxSjGhqMxJy7vAvXn-9hyaiXBoBE5vy=s800-c-k-c0x00ffffff-no-rj\",\"twitter\":\"anyamelfissa\",\"video_count\":\"207\",\"subscriber_count\":\"391000\",\"clip_count\":958,\"top_topics\":[\"talk\",\"dbd\",\"Outer_Wilds\"]}]",
+      "headers": {
+        "Date": "Sun, 10 Oct 2021 14:24:14 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "vary": "Accept-Encoding",
+        "x-dns-prefetch-control": "off",
+        "x-frame-options": "SAMEORIGIN",
+        "strict-transport-security": "max-age=15552000; includeSubDomains",
+        "x-download-options": "noopen",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "access-control-allow-origin": "*",
+        "cache-control": "private, max-age=45",
+        "etag": "W/\"100c-3A33lCRtw6ZQR3Q19OjTBi8QY9k\"",
+        "CF-Cache-Status": "DYNAMIC",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Report-To": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=ugQCipWmGL5emF6KnG60D69HbmRx7rh9r%2FvOKh3O9YEby6vnLeKxl4qJy0Dtt0k8QgKAM8drAh1d96w9Q4YBOPkRJIBzIIt1RRXfWq3VXQRuo1CARyPn%2BS6la58bYQ%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+        "NEL": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+        "Server": "cloudflare",
+        "CF-RAY": "69c082d63d452790-PRG",
+        "alt-svc": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400, h3-28=\":443\"; ma=86400, h3-27=\":443\"; ma=86400"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
