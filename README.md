@@ -1,5 +1,8 @@
 # Holodex
 
+[![Elixir CI](https://github.com/DaniruKun/ex-holodex/actions/workflows/ci.yml/badge.svg)](https://github.com/DaniruKun/ex-holodex/actions/workflows/ci.yml)
+[![Hex pm](https://img.shields.io/hexpm/v/holodex.svg)](https://hex.pm/packages/holodex)
+
 An Elixir client library for the [Holodex API](https://holodex.stoplight.io).
 
 ## Installation
@@ -25,6 +28,8 @@ config :holodex,
 ```
 
 ## Usage
+
+[API Docs](https://hexdocs.pm/holodex/)
 
 Interactions with the API are split by the resource name as a "child" of the [Holodex.Api](./lib/api) namespace.
 
@@ -58,8 +63,4 @@ iex(2)> Holodex.Api.Channels.get_channel! "UCyl1z3jo3XHR1riLFKG5UAg"
   view_count: "90537151"
 }
 ```
-
-
-Once published, the docs can
-be found at [https://hexdocs.pm/holodex](https://hexdocs.pm/holodex).
 
