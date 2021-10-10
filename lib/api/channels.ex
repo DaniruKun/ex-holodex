@@ -53,7 +53,7 @@ defmodule Holodex.Api.Channels do
 
   Raises an exception in case of failure.
   """
-  @spec get_channel!(binary()) :: Channel.t() | no_return()
+  @spec get_channel!(String.t()) :: Channel.t() | no_return()
   def get_channel!(channel_id) do
     with response <- Client.get!("/channels/#{channel_id}") do
       Poison.decode!(response.body, %{as: %Channel{}})
@@ -65,7 +65,7 @@ defmodule Holodex.Api.Channels do
 
   Returns a tuple containing the channel info or an error.
   """
-  @spec get_channel(binary()) ::
+  @spec get_channel(String.t()) ::
           {:ok, Channel.t()} | {:error, HTTPoison.Error.t()} | {:error, Exception.t()}
   def get_channel(channel_id) do
     with {:ok, response} <- Client.get("/channels/#{channel_id}"),

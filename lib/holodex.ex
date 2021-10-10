@@ -1,18 +1,6 @@
 defmodule Holodex do
-  @moduledoc """
-  Documentation for `Holodex`.
-  """
+  readme_path = [__DIR__, "..", "README.md"] |> Path.join() |> Path.expand()
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Holodex.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  @external_resource readme_path
+  @moduledoc readme_path |> File.read!() |> String.trim()
 end
