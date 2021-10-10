@@ -37,6 +37,7 @@ defmodule Holodex.Api.Videos do
 
   @list_of_videos_p [
     %Video{
+      channel: %Channel{},
       clips: [%Video{}],
       sources: [%Video{}],
       refers: [%Video{}],

@@ -4,7 +4,7 @@ defmodule Holodex.MixProject do
   @app :holodex
   @git_url "https://github.com/DaniruKun/ex-holodex"
   @home_url @git_url
-  @version "0.1.1"
+  @version "0.1.2"
 
   @deps [
     {:poison, "~> 5.0"},

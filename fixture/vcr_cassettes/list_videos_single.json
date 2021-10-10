@@ -1,0 +1,43 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "X-APIKEY": ""
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://holodex.net/api/v2/videos?id=jJNGVn3g3_g"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"id\":\"jJNGVn3g3_g\",\"title\":\"【WE WERE HERE TOGETHER】I Understand Everything.🧠 #kfp #キアライブ\",\"type\":\"stream\",\"topic_id\":\"We_Were_Here\",\"published_at\":\"2021-10-10T13:33:06.000Z\",\"available_at\":\"2021-10-10T19:00:00.000Z\",\"duration\":0,\"status\":\"upcoming\",\"channel\":{\"id\":\"UCHsx4Hqa-1ORjQTh9TYDhww\",\"name\":\"Takanashi Kiara Ch. hololive-EN\",\"org\":\"Hololive\",\"type\":\"vtuber\",\"photo\":\"https://yt3.ggpht.com/ytc/AKedOLRlcr4d2hFSydP7swZwUfZM5J3VWA3M41ucCVES=s800-c-k-c0x00ffffff-no-rj\",\"english_name\":\"Takanashi Kiara\"}}]",
+      "headers": {
+        "Date": "Sun, 10 Oct 2021 18:58:32 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "vary": "Accept-Encoding",
+        "x-dns-prefetch-control": "off",
+        "x-frame-options": "SAMEORIGIN",
+        "strict-transport-security": "max-age=15552000; includeSubDomains",
+        "x-download-options": "noopen",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "access-control-allow-origin": "*",
+        "cache-control": "private, max-age=45",
+        "etag": "W/\"210-9Mh9xwqTakzCyE+H/VKHLAWWKl0\"",
+        "CF-Cache-Status": "DYNAMIC",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Report-To": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=rTWgmjYZg%2F%2FMQ1a00Hw1zJliv0g2nKfreQuANrxsR1Jcby3hQeRj7FQO2bip1wcJdpuCVTWyoq5Zmkf8tHpEUL174ymWyptqyZ8roPrXNch1WXgNl5974mDqhzBtRQ%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+        "NEL": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+        "Server": "cloudflare",
+        "CF-RAY": "69c214aad8624131-PRG",
+        "alt-svc": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400, h3-28=\":443\"; ma=86400, h3-27=\":443\"; ma=86400"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
