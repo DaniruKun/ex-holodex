@@ -12,6 +12,7 @@ defmodule Holodex.Model.Video do
     :available_at,
     :duration,
     :status,
+    :live_tl_count,
     :start_scheduled,
     :start_actual,
     :end_actual,
@@ -31,7 +32,7 @@ defmodule Holodex.Model.Video do
   ]
 
   @typedoc """
-  `Video` resource type definition. A map of atom keys and mstly UTF-8 binary values. 
+  `Video` resource type definition. A map of atom keys and mostly UTF-8 binary values. 
   Can optionally contain a `channel` bare map.
   """
   @type t() :: %__MODULE__{
@@ -43,6 +44,7 @@ defmodule Holodex.Model.Video do
           available_at: String.t(),
           duration: pos_integer(),
           status: String.t(),
+		  live_tl_count: LiveTLCount.t(),
           start_scheduled: String.t(),
           start_actual: String.t(),
           end_actual: String.t(),
@@ -60,4 +62,13 @@ defmodule Holodex.Model.Video do
           comments: [Model.Comment.t()] | nil,
           recommendations: [Model.Video.t()] | nil
         }
+
+  defmodule LiveTLCount do
+    @moduledoc """
+    Struct containing translation counts per language.
+    """
+    defstruct [:es, :en, :ko, :ja, :ru]
+
+	@type t :: map() | nil | %{}
+  end
 end

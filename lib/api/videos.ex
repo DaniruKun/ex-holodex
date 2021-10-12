@@ -6,7 +6,8 @@ defmodule Holodex.Api.Videos do
   """
 
   alias Holodex.Api.Client
-  alias Holodex.Model.{Channel, Comment, Video}
+  alias Holodex.Model.{Channel, Comment, Video, Video}
+  alias Holodex.Model.Video.LiveTLCount
 
   @type opts() ::
           %{
@@ -42,7 +43,8 @@ defmodule Holodex.Api.Videos do
       sources: [%Video{}],
       refers: [%Video{}],
       simulcasts: [%Video{}],
-      mentions: [%Channel{}]
+      mentions: [%Channel{}],
+      live_tl_count: %LiveTLCount{}
     }
   ]
 
@@ -53,7 +55,8 @@ defmodule Holodex.Api.Videos do
     simulcasts: [%Video{}],
     mentions: [%Channel{}],
     comments: [%Comment{}],
-    recommendations: [%Video{}]
+    recommendations: [%Video{}],
+    live_tl_count: %LiveTLCount{}
   }
 
   defdelegate fetch(video_id), to: __MODULE__, as: :video_info
@@ -70,7 +73,7 @@ defmodule Holodex.Api.Videos do
   def list_videos!(opts \\ %{}) do
     with url <- build_videos_url(opts),
          body <- Client.get!(url).body do
-      Poison.decode!(body, %{as: @list_of_videos_p})
+      Poison.decode!(body, %{as: @list_of_videos_p, keys: :atoms!})
     end
   end
 
@@ -84,7 +87,7 @@ defmodule Holodex.Api.Videos do
   def list_videos(opts \\ %{}) do
     with url <- build_videos_url(opts),
          {:ok, response} <- Client.get(url),
-         {:ok, decoded} <- Poison.decode(response.body, %{as: @list_of_videos_p}) do
+         {:ok, decoded} <- Poison.decode(response.body, %{as: @list_of_videos_p, keys: :atoms!}) do
       {:ok, decoded}
     end
   end
@@ -98,7 +101,7 @@ defmodule Holodex.Api.Videos do
   def video_info!(video_id, opts \\ %{}) do
     with url <- build_videos_url(opts, "/videos/#{video_id}"),
          response <- Client.get!(url) do
-      Poison.decode!(response.body, %{as: @single_video_p})
+      Poison.decode!(response.body, %{as: @single_video_p, keys: :atoms!})
     end
   end
 
@@ -110,7 +113,7 @@ defmodule Holodex.Api.Videos do
   def video_info(video_id, opts \\ %{}) do
     with url <- build_videos_url(opts, "/videos/#{video_id}"),
          {:ok, response} <- Client.get(url),
-         {:ok, decoded} <- Poison.decode(response.body, %{as: @single_video_p}) do
+         {:ok, decoded} <- Poison.decode(response.body, %{as: @single_video_p, keys: :atoms!}) do
       {:ok, decoded}
     end
   end

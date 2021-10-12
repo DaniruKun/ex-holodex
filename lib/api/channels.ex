@@ -43,7 +43,7 @@ defmodule Holodex.Api.Channels do
   def list_channels(opts \\ %{}) do
     with url <- build_channels_url(opts),
          {:ok, response} <- Client.get(url),
-         {:ok, decoded} <- Poison.decode(response.body, %{as: [%Channel{}]}) do
+         {:ok, decoded} <- Poison.decode(response.body, %{as: [%Channel{}], keys: :atoms!}) do
       {:ok, decoded}
     end
   end
@@ -69,7 +69,7 @@ defmodule Holodex.Api.Channels do
           {:ok, Channel.t()} | {:error, HTTPoison.Error.t()} | {:error, Exception.t()}
   def get_channel(channel_id) do
     with {:ok, response} <- Client.get("/channels/#{channel_id}"),
-         {:ok, decoded} <- Poison.decode(response.body, %{as: %Channel{}}) do
+         {:ok, decoded} <- Poison.decode(response.body, %{as: %Channel{}, keys: :atoms!}) do
       {:ok, decoded}
     end
   end
