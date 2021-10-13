@@ -25,7 +25,7 @@ by adding `holodex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:holodex, "~> 0.1.0"}
+    {:holodex, "~> 0.1.3"}
   ]
 end
 ```

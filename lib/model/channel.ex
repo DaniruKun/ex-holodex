@@ -16,15 +16,15 @@ defmodule Holodex.Model.Channel do
     :subscriber_count,
     :comments_crawled_at,
     :updated_at,
-	:yt_uploads_id,
-	:crawled_at,
+    :yt_uploads_id,
+    :crawled_at,
     :view_count,
     :clip_count,
     :top_topics,
     :lang,
     :published_at,
     :inactive,
-	:created_at,
+    :created_at,
     :description
   ]
 
@@ -46,15 +46,15 @@ defmodule Holodex.Model.Channel do
           subscriber_count: String.t() | nil,
           comments_crawled_at: String.t() | nil,
           updated_at: String.t() | nil,
-		  yt_uploads_id: String.t() | nil,
-		  crawled_at: String.t() | nil,
+          yt_uploads_id: String.t() | nil,
+          crawled_at: String.t() | nil,
           view_count: String.t() | nil,
           clip_count: String.t() | nil,
           top_topics: [String.t()] | [] | nil,
           lang: String.t() | nil,
           published_at: String.t() | nil,
           inactive: boolean() | nil,
-		  created_at: String.t() | nil,
+          created_at: String.t() | nil,
           description: String.t() | nil
         }
 end

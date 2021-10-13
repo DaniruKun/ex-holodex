@@ -12,7 +12,7 @@ defmodule Holodex.MixProject do
     {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
     {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
     {:ex_doc, "~> 0.25.1", only: :dev},
-	{:exvcr, "~> 0.12.0", only: [:dev, :test]}
+    {:exvcr, "~> 0.12.0", only: [:dev, :test]}
   ]
 
   @package [

@@ -44,7 +44,7 @@ defmodule Holodex.Model.Video do
           available_at: String.t(),
           duration: pos_integer(),
           status: String.t(),
-		  live_tl_count: LiveTLCount.t(),
+          live_tl_count: LiveTLCount.t(),
           start_scheduled: String.t(),
           start_actual: String.t(),
           end_actual: String.t(),
@@ -69,6 +69,6 @@ defmodule Holodex.Model.Video do
     """
     defstruct [:es, :en, :ko, :ja, :ru]
 
-	@type t :: map() | nil | %{}
+    @type t :: map() | nil | %{}
   end
 end

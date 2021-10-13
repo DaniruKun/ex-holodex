@@ -5,7 +5,7 @@ defmodule Holodex.Config do
 
   def api_token, do: config_or_env(:api_token) || @default_token
   def timeout, do: @default_timeout
-  
+
   defp config_or_env(key) do
     case Application.fetch_env(:holodex, key) do
       {:ok, {:system, var}} ->
